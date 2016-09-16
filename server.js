@@ -5,7 +5,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
 mongoose.connect('mongodb://127.0.0.1:27017/scotchgram');
+
 
 app.set('port', 4000 || process.env.PORT);
 

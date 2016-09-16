@@ -1,0 +1,23 @@
+{
+  "name": "scotch-cloudinary",
+  "description": "Demo on how to use Cloudinary",
+  "main": "server.js",
+  "authors": [
+    "Christian Nwamba"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Cloudinary"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cloudinary-jquery-file-upload": "^2.1.3"
+  }
+}

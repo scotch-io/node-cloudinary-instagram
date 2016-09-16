@@ -16,20 +16,18 @@ module.exports = {
       res.render('pages/new');
   },
   create: function (req, res) {
-      cloudinary.uploader.upload(req.files.image.path, function(result) {
-          var post = new Model({
-              title: req.body.title,
-              description: req.body.description,
-              created_at: new Date(),
-              image: result.url
-          });
+      var post = new Model({
+          title: req.body.title,
+          description: req.body.description,
+          created_at: new Date(),
+          image: req.body.image
+      });
 
-          post.save(function (err) {
-              if(err){
-                  res.send(err)
-              }
-              res.redirect('/');
-          });
+      post.save(function (err) {
+          if(err){
+              res.send(err)
+          }
+          res.redirect('/');
       });
   }
 };
