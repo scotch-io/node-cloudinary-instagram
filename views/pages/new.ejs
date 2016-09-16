@@ -15,7 +15,7 @@
     <div class="ui grid container">
         <div class="ui two column centered grid">
             <div class="column">
-                <form action="/create" method="post" enctype="multipart/form-data" class="ui form">
+                <form action="/create" method="post" enctype="multipart/form-data" class="ui form upload_form">
                     <div class="field">
                         <label>Title</label>
                         <input name="title" type="text" placeholder="Title" />
@@ -26,8 +26,15 @@
                     </div>
                     <div class="field">
                         <label>Image</label>
-                        <input name="image" type="text" placeholder="Image URL" id="url_text"/>
+                        <input name="file" type="file" class="upload_field"/>
                     </div>
+
+                    <div class="thumbnails"></div>
+
+                    <div class="ui teal progress" class="progress">
+                        <div class="bar"></div>
+                    </div>
+
                     <button class="ui button" type="button" id="upload_widget_opener">Upload with Widget</button>
                     <button class="ui primary button" type="submit">Post</button>
                 </form>

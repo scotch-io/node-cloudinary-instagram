@@ -2,7 +2,14 @@
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.12.5/js/jquery.iframe-transport.js' type='text/javascript'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.12.5/js/jquery.fileupload.js' type='text/javascript'></script>
+<script src='https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.min.js' type='text/javascript'></script>
+
 <script>
+    $.cloudinary.config({ cloud_name: 'christekh', api_key: '538641294753298'})
     document.getElementById("upload_widget_opener").addEventListener("click", function() {
 
         cloudinary.openUploadWidget({ cloud_name: 'christekh', upload_preset: 'idcidr0h'},
@@ -12,4 +19,21 @@
                 });
 
     }, false);
+
+    $('.upload_field').unsigned_cloudinary_upload("idcidr0h",
+            { cloud_name: 'christekh', api_key: '538641294753298'},
+            { multiple: true }
+    ).bind('cloudinarydone', function(e, data) {
+
+        $('.thumbnails').append($.cloudinary.image(data.result.public_id,
+                { format: 'jpg', width: 150, height: 100,
+                    crop: 'thumb', gravity: 'face', effect: 'saturation:50' } ))}
+
+    ).bind('cloudinaryprogress', function(e, data) {
+
+        $('.progress').progress({
+            percent: Math.round((data.loaded * 100.0) / data.total)
+        });
+
+    });
 </script>
