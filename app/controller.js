@@ -16,7 +16,11 @@ module.exports = {
       res.render('pages/new');
   },
   create: function (req, res) {
-      cloudinary.uploader.upload(req.files.image.path, function(result) {
+      cloudinary.v2.uploader.upload(req.files.image.path,
+          //Apply transformation
+          { width: 1000, height: 500, crop: "limit" },
+          function(err, result) {
+              console.log(result);
           var post = new Model({
               title: req.body.title,
               description: req.body.description,
