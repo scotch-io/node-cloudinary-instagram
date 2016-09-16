@@ -2,18 +2,20 @@
 // Load dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var app = express();
+mongoose.connect('mongodb://127.0.0.1:27017/scotchgram');
+
 app.set('port', 4000 || process.env.PORT);
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
 
 // Parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// Parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // Routes
 require('./routes')(app);

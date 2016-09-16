@@ -14,7 +14,10 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cloudinary": "^1.4.2",
+    "connect-multiparty": "^2.0.0",
     "ejs": "^2.5.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mongoose": "^4.6.0"
   }
 }
