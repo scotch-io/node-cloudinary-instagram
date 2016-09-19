@@ -1,4 +1,4 @@
-<!-- views/pages/about.ejs -->
+<!-- views/pages/index.ejs -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,11 +9,49 @@
 
 <header>
     <% include ../partials/header %>
+
 </header>
 
 <main>
-    <h1>Hi</h1>
-</main>
+    <div class="ui grid container">
+        <div class="ui three column centered grid">
+            <% posts.forEach(function(post, index) { %>
+
+                    <div class="column">
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="<%= post.image %>" style="max-height: 150px">
+                        </div>
+                        <div class="content">
+                            <a class="header" href="/<%= post.image_id %>"><%= post.title %></a>
+                            <div class="meta">
+                                <span class="date">
+                                    <i class="calendar icon"></i> <%= post.created_at.getFullYear() %>
+                                    <br>
+                                    <i class="image icon"></i> <%= post.image_id %>
+                                </span>
+                            </div>
+                            <div class="description">
+                                <%= post.description %>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <form action="/destroy" method="post" style="display: inline" id="destroy_form<%= index %>">
+                                <input type="hidden" name="image_id" value="<%= post.image_id %>">
+                                <a onclick="document.getElementById('destroy_form<%= index %>').submit(); return false;">
+                                    <i class="remove icon"></i> Remove
+                                </a>
+                            </form>
+                            <a href="/edit/<%= post.image_id %>">
+                                <i class="edit icon"></i> Edit
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            <% }); %>
+        </div>
+    </div>
 
 <% include ../partials/scripts %>
 </body>

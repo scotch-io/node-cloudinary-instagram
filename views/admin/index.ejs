@@ -1,0 +1,69 @@
+<!-- views/admin/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+    <h3 class="ui center aligned icon header">
+        Administrator
+    </h3>
+</header>
+
+<main>
+    <div class="ui grid container">
+        <div class="ui two column centered grid">
+            <div class="column">
+                <form class="ui form">
+                    <div class="field">
+                        <input name="q" type="text" placeholder="Search"  value="<%= searchValue %>"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="ui grid container">
+        <div class="ui three column centered grid">
+            <% posts.forEach(function(post, index) { %>
+
+            <div class="column">
+                <div class="ui card">
+                    <div class="image">
+                        <img src="<%= post.url %>" style="max-height: 150px">
+                    </div>
+                    <div class="content">
+                        <a class="header"><%= post.public_id %></a>
+                        <div class="meta">
+                                <span class="date">
+                                    <i class="calendar icon"></i> <%= post.created_at %>
+                                </span>
+                        </div>
+                        <div class="description">
+                           Dimension: <%= post.width %> X <%= post.height %>
+                        </div>
+                    </div>
+                    <div class="extra content">
+                        <form action="/admin/destroy" method="post" style="display: inline" id="destroy_form<%= index %>">
+                            <input type="hidden" name="image_id" value="<%= post.public_id %>">
+                            <a onclick="document.getElementById('destroy_form<%= index %>').submit(); return false;">
+                                <i class="remove icon"></i> Remove
+                            </a>
+                        </form>
+                        <a href="/edit/<%= post.public_id %>">
+                            <i class="edit icon"></i> Edit
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <% }); %>
+        </div>
+    </div>
+
+    <% include ../partials/scripts %>
+</body>
+</html>

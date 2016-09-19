@@ -9,6 +9,9 @@
 
 <header>
     <% include ../partials/header %>
+    <h3 class="ui center aligned icon header">
+        New Post
+    </h3>
 </header>
 
 <main>
@@ -25,10 +28,21 @@
                         <textarea rows="4" name="description" placeholder="Description"></textarea>
                     </div>
                     <div class="field">
-                        <label>Image</label>
-                        <input name="image" type="text" placeholder="Image URL" id="url_text"/>
+                        <label>Tags</label>
+                        <div class="ui fluid multiple search selection dropdown" id="tag">
+                            <input name="tags" type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Tags</div>
+                            <div class="menu">
+                                <div class="item" data-value="puppy">puppy</div>
+                                <div class="item" data-value="kitten">kitten</div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="ui button" type="button" id="upload_widget_opener">Upload with Widget</button>
+                    <div class="field">
+                        <label>Image</label>
+                        <input name="image" type="file" />
+                    </div>
                     <button class="ui primary button" type="submit">Post</button>
                 </form>
             </div>

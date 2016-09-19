@@ -1,0 +1,32 @@
+<!-- views/pages/single.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ../partials/header %>
+    <h3 class="ui center aligned icon header">
+        <%= post.title %>
+    </h3>
+</header>
+
+<main>
+    <div class="ui grid container">
+        <div class="ui three column centered grid">
+            <div class="column">
+                <img class="ui medium centered image" src="<%= image_url(post.image_id, {width: 200, height: 200, radius: 100, crop: "fill", border: "10px_solid_grey", effect: "grayscale"}) %>">
+                <br>
+                <p><strong>Title: </strong> <%= post.title %></p>
+                <p><strong>Description: </strong> <%= post.description %></p>
+                <p><strong>Public ID: </strong> <%= post.image_id %></p>
+            </div>
+        </div>
+    </div>
+
+    <% include ../partials/scripts %>
+</body>
+</html>

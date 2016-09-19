@@ -7,6 +7,7 @@ var postSchema = new Schema({
     title: String,
     description: String,
     image: String,
+    image_id: String,
     created_at: Date
 });
 
