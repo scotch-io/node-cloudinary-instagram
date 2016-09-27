@@ -8,7 +8,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/public'));
 
-mongoose.connect('mongodb://127.0.0.1:27017/scotchgram');
+mongoose.connect('mongodb://scotch:scotch@ds041546.mlab.com:41546/cloudinary-instagram');
 
 
 app.set('port', 4000 || process.env.PORT);
