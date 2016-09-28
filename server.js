@@ -3,9 +3,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var morgan       = require('morgan');
 
 var app = express();
-
+app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 mongoose.connect('mongodb://scotch:scotch@ds041546.mlab.com:41546/cloudinary-instagram');

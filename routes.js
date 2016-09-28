@@ -14,9 +14,9 @@ module.exports = function (app) {
 
     app.post('/destroy', controller.destroy);
 
-    app.get('/:id', controller.find);
+    app.get('/account/:id', controller.find);
 
-    
+
     /*
     * Admin Routes
     *
