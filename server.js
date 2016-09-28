@@ -12,7 +12,7 @@ app.use(express.static(__dirname + '/public'));
 mongoose.connect('mongodb://scotch:scotch@ds041546.mlab.com:41546/cloudinary-instagram');
 
 
-app.set('port', 4000 || process.env.PORT);
+app.set('port', process.env.PORT || 4000);
 
 // Set the view engine to ejs
 app.set('view engine', 'ejs');
