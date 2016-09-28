@@ -3,9 +3,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var morgan       = require('morgan');
 
 var app = express();
-
+app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 mongoose.connect('mongodb://127.0.0.1:27017/scotchgram');

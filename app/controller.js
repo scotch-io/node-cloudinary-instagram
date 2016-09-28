@@ -32,7 +32,7 @@ module.exports = {
           if(err) res.send(err);
 
           res.render('pages/edit', {post: posts[0]});
-      });
+      }); 
   },
   create: function (req, res) {
       cloudinary.v2.uploader.upload(req.files.image.path,
@@ -73,7 +73,7 @@ module.exports = {
   },
   destroy: function (req, res) {
       var imageId = req.body.image_id;
-      cloudinary.v2.uploader.destroy(imageId, function (result) {
+      cloudinary.v2.uploader.destroy(imageId, function (error, result) {
               Model.findOneAndRemove({ image_id: imageId }, function(err) {
                   if (err) res.send(err);
 
@@ -81,7 +81,7 @@ module.exports = {
               });
           });
   },
-    
+
     admin:{
         index: function (req, res) {
             var q = req.query.q;
